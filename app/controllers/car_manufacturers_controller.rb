@@ -1,6 +1,4 @@
 class CarManufacturersController < ApplicationController
-  before_action :authenticate_user!
-
   def index
     if params[:searchParams]
       @searchParams = params[:searchParams]

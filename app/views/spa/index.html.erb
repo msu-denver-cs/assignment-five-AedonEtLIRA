@@ -1,0 +1,60 @@
+<script>
+  var failure = "<div>Failed to make request to server</div>";
+
+  var load_cars = function() {
+      var request = new XMLHttpRequest();
+      request.onreadystatechange = function() {
+          if (request.readyState == 4 && request.status == 200) {
+              document.getElementById("container").innerHTML = "<div>" + request.responseText + "</div>";
+          } else {
+              document.getElementById(failure)
+          }
+      };
+      request.open("GET", "http://www.localhost:3000/cars", true);
+      request.send(null);
+  };
+
+  var load_manufacturers = function() {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (request.readyState == 4 && request.status == 200) {
+            document.getElementById("container").innerHTML = "<div>" + request.responseText + "</div>";
+        } else {
+            document.getElementById(failure)
+        }
+    };
+    request.open("GET", "http://www.localhost:3000/car_manufacturers", true);
+    request.send(null);
+  };
+
+  var load_car_parts = function() {
+      var request = new XMLHttpRequest();
+      request.onreadystatechange = function() {
+          if (request.readyState == 4 && request.status == 200) {
+              document.getElementById("container").innerHTML = "<div>" + request.responseText + "</div>";
+          } else {
+              document.getElementById(failure)
+          }
+      };
+      request.open("GET", "http://www.localhost:3000/car_parts", true);
+      request.send(null);
+  };
+</script>
+
+<table>
+  <tr>
+    <td>
+      <button onclick="load_cars()">Cars</button>
+    </td>
+    <td>
+      <button onclick="load_manufacturers()">Manufacturers</button>
+    </td>
+    <td>
+      <button onclick="load_car_parts()">Car Parts</button>
+    </td>
+  </tr>
+</table>
+<hr>
+
+<div id="container">
+</div>
